@@ -1,13 +1,13 @@
 
 
 .color-page2 {
-  background: linear-gradient(45deg, #000000, #051937, #cc5500 );
+  background: linear-gradient(45deg, #000000,  #cc5500 );
   position: relative;
   animation: pastelRainbow 15s ease infinite;
   background-size: 400% 400%;
 }
 
-body {
+html {
   font-family: 'Montserrat';
   overflow-x: hidden;
   -webkit-user-select: none;
@@ -27,7 +27,11 @@ a{
   border-radius: 25px;
   min-height: 300px;
 }
-
+.burnt{
+  color: #cc5500;
+  background-color: white;
+  border-color: #cc5500;
+}
 
 
 @keyframes pastelRainbow {
