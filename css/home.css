@@ -10,9 +10,11 @@
 html, body{
   font-family: 'Montserrat';
   overflow-x: hidden;
+
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
+
 
 }
 
