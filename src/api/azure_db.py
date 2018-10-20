@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 
-
 import requests
 import json
 import pyodbc
 
-class Test(object):
+class SQLDatabase(object):
 
     def get_server_info(self):
         url = "https://management.azure.com/subscriptions/2571f3fc-64e6-46cd-9f64-298fc4372dfa/resourceGroups/apd_data/providers/Microsoft.Sql/servers/saferacres"
@@ -33,25 +32,130 @@ class Test(object):
         response_json = response.json()
         print("Database info: {}\n".format(response_json))
 
-    def query_db(self):
-        # Set query parameters
+    def is_valid(self, data):
+        desired_fields = ['location', 'longitude', 'latitude', 'crime_type', 'occ_time', 'occ_date', 'zip_code']
+        for field in desired_fields:
+            if field not in data:
+                return False
+        return True
+
+    def query_crime_data(self):
         server = 'saferacres.database.windows.net'
         database = 'apd'
         username = 'saferacres'
         password = 'Yeetman123'
         driver= '{ODBC Driver 13 for SQL Server}'
 
-        # Establish connection to SQL db in Azure cloud
+        cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
+
+        url = "https://data.austintexas.gov/resource/mfej-x5pm.json"
+        response = requests.get(url)
+        json_data = response.json()
+        for data in json_data:
+            if self.is_valid(data):
+                 self.insert_azure_db(cnxn, data)
+            else:
+                print("\033[91mINVALID DATA\033[0m\n")
+        print("DONE querying through all data\n")
+
+    def insert_azure_db(self, cnxn, data):
+        server = 'saferacres.database.windows.net'
+        database = 'apd'
+        username = 'saferacres'
+        password = 'Yeetman123'
+        driver= '{ODBC Driver 13 for SQL Server}'
+        try:
+            cursor = cnxn.cursor()
+            cursor.execute("INSERT INTO apd_data VALUES (?, ?, ?, ?, ?, ?)",
+                   (data["crime_type"], data["occ_date"], data["occ_time"], data['longitude'], data['latitude'], data["zip_code"]))
+            print("Data successfully inserted!\n")
+        except Exception as e:
+            print("\033[91mERROR inserting: {}\033[0m\n".format(e))
+        cnxn.commit()
+
+    def query_all_crimes(self):
+        server = 'saferacres.database.windows.net'
+        database = 'apd'
+        username = 'saferacres'
+        password = 'Yeetman123'
+        driver= '{ODBC Driver 13 for SQL Server}'
+
         cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
         cursor = cnxn.cursor()
+        cursor.execute("SELECT * FROM apd_data")
+        item = cursor.fetchone()
+        all_crimes = []
+        #return res[0]
+        while item:
+            data = {
+                'crime_type': item[0],
+                'crime_date': item[1],
+                'crime_time': item[2],
+                'crime_long': item[3],
+                'crime_lat': item[4],
+                'crime_zip': item[5]
+            }
+            all_crimes.append(data)
+            item = cursor.fetchone()
+        return all_crimes
 
-        query = "SELECT COUNT(*) FROM test"
-        cursor.execute(query)
-        res = cursor.fetchone()
-        if res:
-            print("Count in db: {}\n".format(res[0]))
+    def query_recent_crimes(self):
+        server = 'saferacres.database.windows.net'
+        database = 'apd'
+        username = 'saferacres'
+        password = 'Yeetman123'
+        driver= '{ODBC Driver 13 for SQL Server}'
+
+        cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
+        cursor = cnxn.cursor()
+        cursor.execute("SELECT * FROM apd_data")
+        item = cursor.fetchone()
+        all_crimes = []
+        #return res[0]
+        while item:
+            date = item[1]
+            year = date.split("-")[0]
+            if int(year) == 2018:
+                data = {
+                    'crime_type': item[0],
+                    'crime_date': item[1],
+                    'crime_time': item[2],
+                    'crime_long': item[3],
+                    'crime_lat': item[4],
+                    'crime_zip': item[5]
+                }
+                all_crimes.append(data)
+            item = cursor.fetchone()
+        return all_crimes
+
+    def query_westcampus_crimes(self):
+        server = 'saferacres.database.windows.net'
+        database = 'apd'
+        username = 'saferacres'
+        password = 'Yeetman123'
+        driver= '{ODBC Driver 13 for SQL Server}'
+
+        cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
+        cursor = cnxn.cursor()
+        cursor.execute("SELECT * FROM apd_data")
+        item = cursor.fetchone()
+        all_crimes = []
+        #return res[0]
+        while item:
+            zip = item[5]
+            if int(zip) == 78705 or int(zip) == 78722 or int(zip) == 78701 or int(zip) == 78703:
+                data = {
+                    'crime_type': item[0],
+                    'crime_date': item[1],
+                    'crime_time': item[2],
+                    'crime_long': item[3],
+                    'crime_lat': item[4],
+                    'crime_zip': item[5]
+                }
+                all_crimes.append(data)
+            item = cursor.fetchone()
+        return all_crimes
 
 
 if __name__ == "__main__":
-    app = Test()
-    app.query_db()
+    app = SQLDatabase()
