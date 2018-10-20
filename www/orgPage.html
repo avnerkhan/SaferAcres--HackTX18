@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Org Card | Pool Org</title>
+  <link rel="icon" href="../img/poolIcon.png">
+
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="../css/style.css" media="screen,projection" />
+  <link rel="stylesheet" href="../css/demo.css">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
+  <script src="../js/medium-editor.js"></script>
+  <link rel="stylesheet" href="../css/medium-editor.css">
+  <link rel="stylesheet" href="../css/default.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-firestore.js"></script>
+  <script>
+    // Initialize Firebase
+    firebase.initializeApp({
+      apiKey: "AIzaSyCvM4gKXyUW58BrDOnqU3bJBGnCNiexCzI",
+      authDomain: "marco-polo-c90db.firebaseapp.com",
+      projectId: "marco-polo-c90db",
+    });
+    const firestore = firebase.firestore();
+    const settings = { /* your settings... */
+      timestampsInSnapshots: true
+    };
+    firestore.settings(settings);
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+  </script>
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="../js/init.js"></script>
+  <script src="../js/markdown.js"></script>
+  <script src="../js/organization.js"></script>
+</head>
+<ul id="slide-out" class="sidenav sidenav-fixed center"><br>
+  <li><a href="orgHome.html" class="tooltipped" data-position="right" data-tooltip="Go Home"><i class="material-icons small">home</i></a></li>
+  <li><a href="orgAdd.html" class="tooltipped" data-position="right" data-tooltip="Add an Event"><i class="material-icons small">add</i></a></li>
+  <li><a href="manage.html" class="tooltipped" data-position="right" data-tooltip="Manage your Events"><i class="material-icons small">edit</i></a></li>
+  <li><a href="https://swarnsingh.typeform.com/to/QlmEfi" class="tooltipped typeform-share " data-position="right" data-tooltip="Contact Traveler" data-mode="drawer_right" style="display:inline-block;text-decoration:none;color:white;cursor:pointer;font-family:Helvetica,Arial,sans-serif;text-align:center;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:bold;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;"
+      target="_blank"><i class="material-icons small">contact_mail</i></a></li>
+  <li><a href="#!" onclick="signOut()" class="tooltipped" data-position="right" data-tooltip="Sign out of Pool"><i class="material-icons small">hotel</i></a></li>
+</ul>
+<nav>
+
+  <div class="nav-wrapper color-page3 black-text">
+    <a href="home.html" class="brand-logo center"><span class="white-text text-lighten-2"><b>marco</b></span><span class="blue-text heavy">polo </span><span class="thin white-text hide-on-med-and-down">Pool Org</span></a>
+    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
+    <ul class="right hide-on-med-and-down black-text">
+      <li>
+        <a class="dropdown-trigger black-text" href="#!" data-target="dropdown1" id="welcomeMessage">
+          <div></div><i class="material-icons right">arrow_drop_down</i></a>
+      </li>
+      <ul id='dropdown1' class='dropdown-content'>
+        <li><a href="#!" onclick="signOut()">Sign Out</a></li>
+      </ul>
+    </ul>
+  </div>
+</nav>
+
+<body class="" onload="renderOrganizationCard()">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12">
+        <div class="" id="rcorners3">
+          <div class=" black-text">
+            <div class="card z-depth-3">
+              <div class="card-content">
+            <div class="row hide-on-small-only">
+              <div class="col s6">
+                <h2 class="left-align"><b>Organization Card</b></h2>
+              </div>
+              <div class="col s6 hide-on-small-only">
+                <a class="waves-effect waves-light btn" id="submit" onclick="organizationCard()"><i class="material-icons right">check</i>Upload Card</a>
+              </div>
+            </div>
+
+            <div class="row hide-on-med-and-up">
+              <div class="col s6">
+                <h5 class=""><b>Organization Card</b></h5>
+              </div>
+              <div class="col s6">
+                <a class="waves-effect waves-light btn" id="submitMobile" onclick="organizationCard()">Upload Card</a>
+              </div>
+            </div>
+            <span>Make your Organization Card for marcopolo here</span>
+
+          </div>
+          </div>
+            <div class="card z-depth-3">
+              <div class=" card-content row">
+                <span class="card-title">Basic Information</span>
+                <div class="input-field col m12 s12">
+                  <input id="name" type="text" placeholder="Placeholder">
+                  <label class="active" for="name">Org Name</label>
+                </div>
+                <div class="input-field col m12 s12">
+                  <select id="category">
+                    <option value="null" class="disabled">Pick a City</option>
+                    <option value="Austin">Austin</option>
+                    <option value="Dallas">Dallas</option>
+                    <option value="Houston">Houston</option>
+                  </select>
+                  <label>City</label>
+                </div>
+                <div class="input-field col m12 s12">
+                  <input id="image" type="text" placeholder="placeholder">
+                  <label class="active" for="image">Add your Image</label>
+
+                </div>
+              </div>
+            </div>
+            <div class="card z-depth-3">
+              <div class="card-content">
+                <span class="card-title">About your Organization</span>
+                <br>
+                <textarea class="materialize-textarea editable" id="story">
+                </textarea>
+              </div>
+            </div>
+
+
+
+            <pre class="markdown" id="story" hidden></pre>
+            <script>
+              (function() {
+                var markDownEl = document.querySelector(".markdown");
+                new MediumEditor(document.querySelector(".editable"), {
+                  extensions: {
+                    markdown: new MeMarkdown(function(md) {
+                      markDownEl.textContent = md;
+                    })
+                  }
+                });
+              })();
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../dist/js/medium-editor.js"></script>
+  <script>
+    var editor = new MediumEditor('.editable', {
+        buttonLabels: 'fontawesome'
+      }),
+      cssLink = document.getElementById('medium-editor-theme');
+  </script>
+  <script>
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        var displayName = user.displayName;
+        var uid = user.uid;
+        var welcome = document.getElementById("welcomeMessage");
+        var welcomeMessage = '<span class="white-text">Welcome ' + displayName + '</span><i class="material-icons right white-text">arrow_drop_down</i></a>';
+        welcome.innerHTML = welcomeMessage;
+
+
+      }
+    });
+
+    function signOut() {
+      firebase.auth().signOut().then(function() {
+        console.log('Signed Out');
+        window.location.href = "../index.html";
+
+      }, function(error) {
+        window.location.href = "../index.html";
+      });
+    }
+  </script>
+  <script src="../js/organization.js"></script>
+  <script src="../js/materialize.js"></script>
+  <script>
+    (function() {
+      var qs, js, q, s, d = document,
+        gi = d.getElementById,
+        ce = d.createElement,
+        gt = d.getElementsByTagName,
+        id = "typef_orm_share",
+        b = "https://embed.typeform.com/";
+      if (!gi.call(d, id)) {
+        js = ce.call(d, "script");
+        js.id = id;
+        js.src = b + "embed.js";
+        q = gt.call(d, "script")[0];
+        q.parentNode.insertBefore(js, q)
+      }
+    })()
+  </script>
+</body>
+
+</html>

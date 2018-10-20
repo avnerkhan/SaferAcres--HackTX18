@@ -1,0 +1,86 @@
+.sidenav {
+  width: 100px;
+}
+@keyframes pastelRainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.color-page2 {
+  background: linear-gradient(80deg, #051937, #004d7a, #008793, #a8eb12);
+  position: relative;
+  animation: pastelRainbow 20s ease infinite;
+  background-size: 400% 400%;
+}
+
+.color-page3 {
+  background: linear-gradient(45deg, #051937, #004d7a, #008793);
+  position: relative;
+  animation: pastelRainbow 30s ease infinite;
+  background-size: 400% 400%;
+}
+body {
+  min-height: 700px;
+  font-family: 'Montserrat';
+  background: linear-gradient(80deg, #DA4453, #89216B);
+  width: 100%;
+  overflow-x: hidden;
+  height: calc(100% + 130px);
+  position: relative;
+  animation: pastelRainbow 20s ease infinite;
+  background-size: 400% 400%;
+}
+select{
+  border-color: none;
+}
+#submit{
+  margin-left: 70%;
+  margin-top: 5%;
+  border-radius: 20px;
+  background: linear-gradient(50deg, HSLA(205, 62%, 44%, 1), #F62D51);
+  animation: pastelRainbow 20s ease infinite;
+  background-size: 400% 400%;
+}
+#submitMobile{
+  margin-left: 30%;
+  margin-top: 5%;
+  border-radius: 20px;
+  /* font-size: 10px; */
+  background: linear-gradient(50deg, HSLA(205, 62%, 44%, 1), #F62D51);
+  animation: pastelRainbow 20s ease infinite;
+  background-size: 400% 400%;
+}
+#rcorners1{
+  height: 350px;
+}
+#rcorners2{
+  min-height: 340px;
+}
+#rcorners3{
+margin-top: 5%;
+}
+.reduceheight {
+  max-height: 500px;
+  border-radius: 20px;
+  padding: 0px;
+  margin: none;
+}
+
+.card {
+  border-radius: 15px;
+  padding: 0px;
+}
+
+.card-image {
+  padding: none;
+  border-radius: 15px;
+  max-height: 500px;
+  max-height: 500px;
+}

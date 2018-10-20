@@ -1,0 +1,48 @@
+body {
+  min-height: 700px;
+  font-family: 'Montserrat';
+  background: linear-gradient(80deg, #051937, #004d7a, #008793,  #a8eb12);
+  width: 100%;
+  height: calc(100% + 130px);
+  position: relative;
+  animation: pastelRainbow 10s ease infinite;
+  background-size: 400% 400%;
+}
+ #rcorners1 {
+   border-radius: 15px;
+   box-shadow: 5px 10px 25px rgba(0, 0, 0, 0.25);
+
+   background-color: #fff;
+ }
+ .color-page {
+     background: linear-gradient(45deg, #00B2E1, #9791B5, #f1658a);
+     position: relative;
+     animation: pastelRainbow 15s ease infinite;
+     background-size: 400% 400%;
+ }
+ .color-page2 {
+     background: linear-gradient(45deg, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+     position: relative;
+     animation: pastelRainbow 15s ease infinite;
+     background-size: 400% 400%;
+ }
+ .color-page3 {
+   background: linear-gradient(45deg, #051937, #004d7a, #008793);
+   position: relative;
+   animation: pastelRainbow 30s ease infinite;
+   background-size: 400% 400%;
+ }
+@keyframes pastelRainbow {
+    0% {
+      background-position: 0% 50%; }
+    50% {
+      background-position: 100% 50%; }
+    100% {
+      background-position: 0% 50%;  }
+}
+.btn-large {
+    border-radius: 30px;
+}
+.btn {
+    border-radius: 30px;
+}
