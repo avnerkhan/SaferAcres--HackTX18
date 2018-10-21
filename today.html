@@ -21,7 +21,17 @@
   <script type="text/javascript" src="js/init.js"></script>
   <script type="text/javascript" src="js/home.js"></script>
   <script type="text/javascript" src="js/marker.js"></script>
-
+  <script>
+  function home() {
+    window.open('home.html');
+  }
+  function map() {
+    window.open('map.html');
+  }
+  function today() {
+    window.open('today.html');
+  }
+  </script>
 </head>
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -39,13 +49,13 @@
 <nav class="navbar is-fixed-bottom is-dark">
   <div class="columns is-mobile">
     <div class="column" style="margin-left: 10%; margin-top: 2%;">
-      <a onclick="window.open('home.html');"><i class="fa fa-user-ninja fa-lg" aria-hidden="true"></i><br></a>
+      <a onclick="home()"><i class="fa fa-user-ninja fa-lg" aria-hidden="true"></i><br></a>
     </div>
     <div class="column" style="margin-left: 10%; margin-top: 2%;">
-      <a href="window.open('map.html');"><i class="fa fa-map fa-lg" aria-hidden="true"></i><br></a>
+      <a href="map()"><i class="fa fa-map fa-lg" aria-hidden="true"></i><br></a>
     </div>
     <div class="column" style="margin-left: 10%; margin-top: 2%;">
-      <a href="window.open('today.html');"><i class="fa fa-calendar fa-lg" aria-hidden="true"></i><br></a>
+      <a href="today()"><i class="fa fa-calendar fa-lg" aria-hidden="true"></i><br></a>
     </div>
   </div>
 </nav>
