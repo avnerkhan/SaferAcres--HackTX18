@@ -5,7 +5,6 @@ import json
 import pyodbc
 from sodapy import Socrata
 
-
 class SQLDatabase(object):
 
     def get_server_info(self):

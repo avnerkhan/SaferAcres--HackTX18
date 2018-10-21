@@ -1,6 +1,5 @@
 
 var pins = []
-var popups = []
 var predictPins = []
 var commonPins = []
 var isPredicted = false
@@ -42,22 +41,18 @@ function loadData(){
       var pin = new atlas.data.Feature(new atlas.data.Point(pos));
       predictPins.push(pin)
     }
-
     var predictPinsString = JSON.stringify(predictPins)
-
     sessionStorage.setItem("predictPins", predictPinsString)
-
-
   })
 
   $.get("http://localhost:5000/allcrimes", function(data){
-
+    console.log("All data... length of")
+    console.log(data.length)
     console.log(data)
 
     for (var i = 0; i < data.length; i++) {
       var crimeName = data[i].crime_type;
       var time = data[i].crime_time;
-
       var date = data[i].crime_date;
       var zip = data[i].crime_zip;
       var pos = [data[i].crime_long, data[i].crime_lat]
@@ -70,20 +65,21 @@ function loadData(){
 
       var mostCommonCrimes = ['DISTURBANCE - OTHER', 'FAMILY DISTURBANCE', 'ASSAULT W/INJURY-FAM/DATE VIOL']
 
-      if (mostCommonCrimes.includes(crimeName)) {
-        commonPins.push(pin)
-      }
-      else {
-        pins.push(pin)
-      }
+      // if (mostCommonCrimes.includes(crimeName)) {
+      //   commonPins.push(pin)
+      // }
+      // else {
+      //   pins.push(pin)
+      // }
+      pins.push(pin)
       // if(crimeDate.getDay() == todayDate.getDay() ){
       //
       // }
 
     }
     var pinsString = JSON.stringify(pins)
-    var commonPinsString = JSON.stringify(commonPins)
-    sessionStorage.setItem("commonPins", commonPinsString)
+    // var commonPinsString = JSON.stringify(commonPins)
+    // sessionStorage.setItem("commonPins", commonPinsString)
     sessionStorage.setItem("pins", pinsString)
   })
 }
@@ -91,7 +87,7 @@ function loadData(){
 function showData() {
     console.log("show apd pins only...")
     var pins = JSON.parse(sessionStorage.getItem("pins"))
-    var commonPins = JSON.parse(sessionStorage.getItem("commonPins"))
+    // var commonPins = JSON.parse(sessionStorage.getItem("commonPins"))
 
     map.addEventListener("load", function() {
       /* Add a customized pin to the map */
@@ -109,15 +105,15 @@ function showData() {
         title: ""
       });
 
-      map.addPins(commonPins, {
-        fontColor: "#000",
-        fontSize: 14,
-        icon: "pin-round-darkblue",
-        iconSize: 1,
-        name: otherLayer,
-        textFont: "SegoeUi-Bold",
-        textOffset: [0, 20],
-        title: "Common Crime"
-      });
+      // map.addPins(commonPins, {
+      //   fontColor: "#000",
+      //   fontSize: 14,
+      //   icon: "pin-darkblue",
+      //   iconSize: 1,
+      //   name: otherLayer,
+      //   textFont: "SegoeUi-Bold",
+      //   textOffset: [0, 20],
+      //   title: "Common Crime"
+      // });
   })
 }
