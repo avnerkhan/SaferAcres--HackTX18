@@ -2,6 +2,7 @@
 var pins = []
 var popups = []
 var predictPins = []
+var commonPins = []
 var isPredicted = false
 
 function toggle(){
@@ -17,15 +18,14 @@ function toggle(){
       iconSize: 1,
       name: layerName,
       textFont: "SegoeUi-Bold",
-      textOffset: [0, 0],
-      title: ""
+      textOffset: [0, 20],
+      title: "Predicted"
     });
   }
   else {
     console.log("show apd pins only...")
     map.removeLayers(["pred-pin"])
   }
-
 
 }
 
@@ -68,28 +68,35 @@ function loadData(){
       var todayDate = new Date();
       // console.log(crimeDate.getDay())
 
+      var mostCommonCrimes = ['DISTURBANCE - OTHER', 'FAMILY DISTURBANCE', 'ASSAULT W/INJURY-FAM/DATE VIOL']
 
-      if(crimeDate.getDay() == todayDate.getDay() ){
-      pins.push(pin)
+      if (mostCommonCrimes.includes(crimeName)) {
+        commonPins.push(pin)
       }
+      else {
+        pins.push(pin)
+      }
+      // if(crimeDate.getDay() == todayDate.getDay() ){
+      //
+      // }
 
     }
     var pinsString = JSON.stringify(pins)
-
+    var commonPinsString = JSON.stringify(commonPins)
+    sessionStorage.setItem("commonPins", commonPinsString)
     sessionStorage.setItem("pins", pinsString)
   })
 }
 
-
 function showData() {
-  //$('#map').load(' #map > *');
     console.log("show apd pins only...")
     var pins = JSON.parse(sessionStorage.getItem("pins"))
+    var commonPins = JSON.parse(sessionStorage.getItem("commonPins"))
 
     map.addEventListener("load", function() {
       /* Add a customized pin to the map */
       var layerName = "default-pin";
-      // var pin = new atlas.data.Feature(new atlas.data.Point(mapCenterPosition));
+      var otherLayer = "most-common"
 
       map.addPins(pins, {
         fontColor: "#000",
@@ -102,7 +109,15 @@ function showData() {
         title: ""
       });
 
+      map.addPins(commonPins, {
+        fontColor: "#000",
+        fontSize: 14,
+        icon: "pin-round-darkblue",
+        iconSize: 1,
+        name: otherLayer,
+        textFont: "SegoeUi-Bold",
+        textOffset: [0, 20],
+        title: "Common Crime"
+      });
   })
-
-
 }
