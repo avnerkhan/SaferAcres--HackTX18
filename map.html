@@ -3,7 +3,10 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, user-scalable=no" viewport-fit=cover/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SaferAcres">
   <title>Map | SaferAcres</title>
   <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css" />
   <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script>
@@ -16,21 +19,58 @@
   <script type="text/javascript" src="js/init.js"></script>
 
   <script type="text/javascript" src="js/marker.js"></script>
-
+  <script>
+  function home() {
+    window.open('home.html', '_self');
+  }
+  function map() {
+    window.open('map.html', '_self');
+  }
+  function today() {
+    window.open('today.html', '_self');
+  }
+  function reloadload() {
+    window.reload();
+    showFutureEventes();
+  }
+  </script>
 </head>
 
-<body onload="showData()">
-  <div id="map" ></div>
+<body onload="showData()" id="map" >
+  <style>
+#floating-panel {
+ position: absolute;
+ top: 10px;
+ right: 5%;
+ z-index: 5;
+ padding: 5px;
+ text-align: center;
+ line-height: 30px;
+ padding-left: 10px;
+}
+</style>
+
+  <div ></div>
+  <div class="field " id="floating-panel">
+    <div class="control">
+      <div class="select is-primary is-rounded">
+        <select>
+          <option class="has-text-center">Past/Present</option>
+          <option>Future</option>
+        </select>
+      </div>
+    </div>
+  </div>
   <nav class="navbar is-fixed-bottom is-dark">
     <div class="columns is-mobile">
       <div class="column" style="margin-left: 10%; margin-top: 2%;">
-        <a href="home.html"><i class="fa fa-user-ninja fa-lg" aria-hidden="true"></i><br></a>
+        <a onclick="home()"><i class="fa fa-user-ninja fa-lg" aria-hidden="true"></i><br></a>
       </div>
       <div class="column" style="margin-left: 10%; margin-top: 2%;">
-        <a href="map.html"><i class="fa fa-map fa-lg" aria-hidden="true"></i><br></a>
+        <a onclick="map()"><i class="fa fa-map fa-lg" aria-hidden="true"></i><br></a>
       </div>
       <div class="column" style="margin-left: 10%; margin-top: 2%;">
-        <a href="today.html"><i class="fa fa-calendar fa-lg" aria-hidden="true"></i><br></a>
+        <a onclick="today()"><i class="fa fa-calendar fa-lg" aria-hidden="true"></i><br></a>
       </div>
     </div>
   </nav>
