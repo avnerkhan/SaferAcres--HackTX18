@@ -1,5 +1,5 @@
 function login() {
-  window.open("home.html", "_self");
+  window.open("http://40.124.2.212:443/home", "_self");
 }
 function crimeAlert() {
   var description = document.getElementById('description');

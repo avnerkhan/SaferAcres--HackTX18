@@ -19,11 +19,7 @@ CORS(app)
 
 @app.route("/")
 def index_page():
-    return redirect(url_for('login_page'))
-
-@app.route('/login/', methods=['GET', 'POST'])
-def login_page():
-    return redirect(url_for('home_page'))
+    return render_template('index.html')
 
 @app.route('/home')
 def home_page():

@@ -31,7 +31,7 @@ function toggle(){
 
 function loadData(){
   console.log("loading all data...")
-  $.get("http://localhost:5000/predictalccrimes", function(data){
+  $.get("http://localhost:443/predictalccrimes", function(data){
     console.log("Prediction data....")
     console.log(data)
 
@@ -50,7 +50,7 @@ function loadData(){
 
   })
 
-  $.get("http://localhost:5000/allcrimes", function(data){
+  $.get("http://localhost:443/allcrimes", function(data){
 
     console.log(data)
 
