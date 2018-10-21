@@ -3,6 +3,8 @@
 import requests
 import json
 import pyodbc
+from sodapy import Socrata
+
 
 class SQLDatabase(object):
 
@@ -48,15 +50,29 @@ class SQLDatabase(object):
 
         cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
 
-        url = "https://data.austintexas.gov/resource/mfej-x5pm.json"
-        response = requests.get(url)
-        json_data = response.json()
-        for data in json_data:
+        #url = "https://data.austintexas.gov/resource/mfej-x5pm.json"
+        client = Socrata("data.austintexas.gov", None)
+
+        # Example authenticated client (needed for non-public datasets):
+        client = Socrata("data.austintexas.gov",
+                         "0brHjOL2XXWbmmCjIBVTeWU60",
+                        username="abhishek.khare@utexas.edu",
+                       password="Parsegod1998")
+
+        # First 2000 results, returned as JSON from API / converted to Python list of
+        # dictionaries by sodapy.
+        results = client.get("mfej-x5pm", limit=10000)
+        # print(results)
+        #url = "https://data.austintexas.gov/resource/vmn9-3bvu.json"
+        #response = requests.get(url)
+        #json_data = response.json()
+        for data in results:
             if self.is_valid(data):
-                 self.insert_azure_db(cnxn, data)
+                # print(data)
+                self.insert_azure_db(cnxn, data)
             else:
                 print("\033[91mINVALID DATA\033[0m\n")
-        print("DONE querying through all data\n")
+        #print("DONE querying through all data\n")
 
     def insert_azure_db(self, cnxn, data):
         server = 'saferacres.database.windows.net'
@@ -172,7 +188,28 @@ class SQLDatabase(object):
             }
             all_crimes.append(data)
             item = cursor.fetchone()
+
+        cursor.execute("SELECT * FROM failure_to_id_projections")
+        item = cursor.fetchone()
+        while item:
+            data = {
+                'longitude': item[1],
+                'latitude': item[2]
+            }
+            all_crimes.append(data)
+            item = cursor.fetchone()
+
+        cursor.execute("SELECT * FROM crim_trespass_projections")
+        item = cursor.fetchone()
+        while item:
+            data = {
+                'longitude': item[1],
+                'latitude': item[2]
+            }
+            all_crimes.append(data)
+            item = cursor.fetchone()
         return all_crimes
 
 if __name__ == "__main__":
     app = SQLDatabase()
+    #app.query_crime_data()
