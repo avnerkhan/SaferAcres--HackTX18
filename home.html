@@ -30,6 +30,8 @@
   <script type="text/javascript" src="js/init.js"></script>
   <script type="text/javascript" src="js/home.js"></script>
   <script type="text/javascript" src="js/marker.js"></script>
+  <script type="text/javascript" src="js/marker.js"></script>
+
   <script>
     function home() {
       window.open('home.html', '_self');
@@ -88,7 +90,7 @@
     <blockquote>
       Please call 911 first if you are in direct danger. </blockquote>
     <div class="collection" style="border-radius: 20px;">
-      <a href="#!" class="collection-item"><input class="file-input" type="file" name="resume">Record Crime</a>
+      <a href="#!" class="collection-item"><input class="file-input" id="video" type="file" name="resume">Record Crime</a>
     </div>
     <div class="row">
       <form class="col s12">
@@ -100,10 +102,8 @@
         </div>
       </form>
     </div>
-    <a class="button is-primary is-rounded is-danger is-large" style="margin-left: 15%;">Report Crime</a>
-
+    <a class="button is-primary is-rounded is-danger is-large" style="margin-left: 15%;" onclick="crimeAlert();">Report Crime</a>
   </div>
-
 </div>
 
 <body class="" onload="loadData()">
@@ -113,7 +113,7 @@
         <div class="card yellow">
           <div class="card-image">
             <div class="video-container">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/70kt3JnUZfc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> </div>
+              <iframe width="560" height="450" src="https://www.youtube.com/embed/70kt3JnUZfc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> </div>
           </div>
           <div class="card-content">
             <h6><b>Description </b></h6>
@@ -166,7 +166,7 @@
     </div>
     <div class="row">
       <div class="col s12 m7">
-        <div class="card cyan">
+        <div class="card amber">
           <div class="card-image">
             <div class="video-container">
               <iframe width="560" height="315" src="https://www.youtube.com/embed/70kt3JnUZfc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> </div>
