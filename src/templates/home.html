@@ -22,27 +22,27 @@
 
   <!-- Compiled and minified JavaScript -->
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-  <link type="text/css" rel="stylesheet" href="css/animate.css" media="screen,projection" />
-  <link type="text/css" rel="stylesheet" href="css/home.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="../static/css/animate.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="../static/css/home.css" media="screen,projection" />
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-  <script type="text/javascript" src="js/init.js"></script>
-  <script type="text/javascript" src="js/home.js"></script>
-  <script type="text/javascript" src="js/marker.js"></script>
-  <script type="text/javascript" src="js/marker.js"></script>
+  <script type="text/javascript" src="../static/js/init.js"></script>
+  <script type="text/javascript" src="../static/js/home.js"></script>
+  <script type="text/javascript" src="../static/js/marker.js"></script>
+  <script type="text/javascript" src="../static/js/marker.js"></script>
 
   <script>
     function home() {
-      window.open('home.html', '_self');
+      window.open('http://localhost:5000/home', '_self');
     }
 
     function map() {
-      window.open('map.html', '_self');
+      window.open('http://localhost:5000/map', '_self');
     }
 
     function today() {
-      window.open('today.html', '_self');
+      window.open('http://localhost:5000/today', '_self');
     }
   </script>
   <style>
@@ -113,10 +113,14 @@
         <div class="card">
           <div class="card-image">
             <video class="responsive-video" controls>
-              <source src="IMG_4397.mov" type="video/mp4">
+              <source src="../static/img/IMG_4397.mov" type="video/mp4">
             </video>
             <div class="card-content">
-              <h6><b>Description </b></h6>
+              <div class="row">
+                <div class="col s6">
+                  <h6><b>Description </b></h6></div>
+                <div class="col s6 red-text">18% Crime Severity</div>
+              </div>
               <p>Man trying to steal bike and runs away</p>
               <h6><b>Location</b></h6>
               <p>West Campus</p>
@@ -125,7 +129,7 @@
               <h6><b>Suspect Description</b></h6>
               <div class="row valign-wrapper">
                 <div class="col s2">
-                  <img src="img/thief.jpg" alt="" class="circle responsive-img">
+                  <img src="../static/img/thief.jpg" alt="" class="circle responsive-img">
                   <!-- notice the "circle" class -->
                 </div>
                 <div class="col s10">
@@ -141,13 +145,13 @@
           <div class="card">
             <div class="card-image">
               <video class="responsive-video" controls>
-              <source src="IMG_0077.mov" type="video/mp4">
+              <source src="../static/img/IMG_0077.mov" type="video/mp4">
             </video>
               <div class="card-content">
                 <div class="row">
                   <div class="col s6">
                     <h6><b>Description </b></h6></div>
-                  <div class="col s6 red-text">18% Crime Severity</div>
+                  <div class="col s6 red-text">41% Crime Severity</div>
                 </div>
                 <p>Fight breaking out at AT&T Center</p>
                 <h6><b>Location</b></h6>
@@ -157,7 +161,7 @@
                 <h6><b>Suspect Description</b></h6>
                 <div class="row valign-wrapper">
                   <div class="col s2">
-                    <img src="img/thief.jpg" alt="" class="circle responsive-img">
+                    <img src="../static/img/thief.jpg" alt="" class="circle responsive-img">
                     <!-- notice the "circle" class -->
                   </div>
                   <div class="col s10">
@@ -173,23 +177,27 @@
             <div class="card">
               <div class="card-image">
                 <video class="responsive-video" controls>
-              <source src="IMG_4395.mov" type="video/mp4">
+              <source src="../static/img/IMG_4395.mov" type="video/mp4">
             </video>
                 <div class="card-content">
-                  <h6><b>Description </b></h6>
-                  <p>Bruce Lee has returned! This mother fucker is beating on Gandhi</p>
+                  <div class="row">
+                    <div class="col s6">
+                      <h6><b>Description </b></h6></div>
+                    <div class="col s6 red-text">38% Crime Severity</div>
+                  </div>
+                  <p>Theft recorded at HackTX</p>
                   <h6><b>Location</b></h6>
                   <p>ATnT Conference Center</p>
                   <h6><b>Tags</b></h6>
-                  <p>#fight #man #indian #chink</p>
+                  <p>#theft </p>
                   <h6><b>Suspect Description</b></h6>
                   <div class="row valign-wrapper">
                     <div class="col s2">
-                      <img src="img/thief.jpg" alt="" class="circle responsive-img">
+                      <img src="../static/img/thief.jpg" alt="" class="circle responsive-img">
                       <!-- notice the "circle" class -->
                     </div>
                     <div class="col s10">
-                      <span class="black-text">Black Jacket, bulk build.</span>
+                      <span class="black-text">Green Jacket, Tall</span>
                     </div>
                   </div>
                 </div>
@@ -201,23 +209,27 @@
               <div class="card">
                 <div class="card-image">
                   <video class="responsive-video" controls>
-              <source src="IMG_4396.mov" type="video/mp4">
+              <source src="../static/img/IMG_4396.mov" type="video/mp4">
             </video>
                   <div class="card-content">
-                    <h6><b>Description </b></h6>
-                    <p>I am a very simple card. I am good at containing small bits of information. </p>
+                    <div class="row">
+                      <div class="col s6">
+                        <h6><b>Description </b></h6></div>
+                      <div class="col s6 red-text">72% Crime Severity</div>
+                    </div>
+                    <p>Assault recorded at AT&T Conference Center</p>
                     <h6><b>Location</b></h6>
-                    <p>I am a very simple card. I am good at containing small bits of information. </p>
+                    <p>Conference Center</p>
                     <h6><b>Tags</b></h6>
-                    <p>I am a very simple card. I am good at containing small bits of information. </p>
+                    <p>#beaten #injury #attack #assault </p>
                     <h6><b>Suspect Description</b></h6>
                     <div class="row valign-wrapper">
                       <div class="col s2">
-                        <img src="img/thief.jpg" alt="" class="circle responsive-img">
+                        <img src="../static/img/thief.jpg" alt="" class="circle responsive-img">
                         <!-- notice the "circle" class -->
                       </div>
                       <div class="col s10">
-                        <span class="black-text">Black Jacket, bulk build.</span>
+                        <span class="black-text">Green Jacket, Tall</span>
                       </div>
                     </div>
                   </div>

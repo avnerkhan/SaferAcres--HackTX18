@@ -1,9 +1,8 @@
-
-from flask import Flask, request, abort, jsonify
+from flask import Blueprint, Flask, request, abort, jsonify
 from flask_cors import CORS
-from azure_db import SQLDatabase
+from api.azure_db import SQLDatabase
 
-app = Flask(__name__)
+# app = Flask(__name__)
 CORS(app)
 
 azureDB = SQLDatabase()
@@ -13,9 +12,7 @@ recentcrimes = azureDB.query_recent_crimes()
 westcampuscrimes = azureDB.query_westcampus_crimes()
 predicted_alc_crimes = azureDB.query_predicted_alc_crimes()
 
-@app.route("/")
-def init():
-    return "Home page"
+crimes_api = Blueprint('crimes_api', __name__)
 
 @app.route("/allcrimes")
 def all_crimes():
