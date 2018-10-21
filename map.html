@@ -3,9 +3,9 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, user-scalable=no" viewport-fit=cover/>
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="SaferAcres">
   <title>Map | SaferAcres</title>
   <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css" />
@@ -29,10 +29,14 @@
   function today() {
     window.open('today.html', '_self');
   }
+  function reloadload() {
+    window.reload();
+    showFutureEventes();
+  }
   </script>
 </head>
 
-<body onload="showData()">
+<body onload="showData()" id="map" >
   <style>
 #floating-panel {
  position: absolute;
@@ -46,7 +50,7 @@
 }
 </style>
 
-  <div id="map" ></div>
+  <div ></div>
   <div class="field " id="floating-panel">
     <div class="control">
       <div class="select is-primary is-rounded">
