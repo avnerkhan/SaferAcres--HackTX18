@@ -24,6 +24,11 @@ function crimeAlert() {
         "priority": "{string}",
     };
 
+    // var url = "https://api.videoindexer.ai/northeurope/Accounts/c0053fba-cc8d-4204-829e-956248f954c2/Videos?AccessToken?"
+    // $.post(url, function(data){
+    //   console.log(data)
+    // })
+
     $.ajax({
         url: "https://api.videoindexer.ai/northeurope/Accounts/c0053fba-cc8d-4204-829e-956248f954c2/Videos?AccessToken?" + $.param(params),
         beforeSend: function(xhrObj){

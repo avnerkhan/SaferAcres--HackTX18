@@ -24,7 +24,7 @@
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
   <link type="text/css" rel="stylesheet" href="css/animate.css" media="screen,projection" />
   <link type="text/css" rel="stylesheet" href="css/home.css" media="screen,projection" />
-  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
   <script type="text/javascript" src="js/init.js"></script>
@@ -61,7 +61,7 @@
 <div class="navbar-fixed">
   <nav class="white black-text z-depth-0">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo left"><span class="burnt"><b>SaferAcres Feed</b></span></a>
+      <a href="#" class="brand-logo left"><span class="burnt heavy-text"><b>SaferAcres Feed</b></span></a>
       <a class="brand-logo orange-text right modal-trigger" href="#modal1">  <i class="material-icons large">add</i>
 </a>
     </div>
@@ -96,7 +96,7 @@
       <form class="col s12">
         <div class="row">
           <div class="input-field col s12">
-            <textarea id="textarea1" class="materialize-textarea"></textarea>
+            <textarea id="description" class="materialize-textarea"></textarea>
             <label for="textarea1">Quick Description</label>
           </div>
         </div>
@@ -110,119 +110,124 @@
   <div class="container">
     <div class="row">
       <div class="col s12 m7">
-        <div class="card yellow">
-          <div class="card-image">
-            <div class="video-container">
-              <iframe width="560" height="450" src="https://www.youtube.com/embed/70kt3JnUZfc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> </div>
-          </div>
-          <div class="card-content">
-            <h6><b>Description </b></h6>
-            <p>I am a very simple card. I am good at containing small bits of information. </p>
-            <h6><b>Location</b></h6>
-            <p>I am a very simple card. I am good at containing small bits of information. </p>
-            <h6><b>Tags</b></h6>
-            <p>I am a very simple card. I am good at containing small bits of information. </p>
-            <h6><b>Suspect Description</b></h6>
-            <div class="row valign-wrapper">
-              <div class="col s2">
-                <img src="img/black.jpg" alt="" class="circle responsive-img">
-                <!-- notice the "circle" class -->
-              </div>
-              <div class="col s10">
-                <span class="black-text">  Black man with white eyes. Be careful.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s12 m7">
-        <div class="card orange">
-          <div class="card-image">
-            <div class="video-container">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/70kt3JnUZfc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> </div>
-          </div>
-          <div class="card-content">
-            <h6><b>Description </b></h6>
-            <p>I am a very simple card. I am good at containing small bits of information. </p>
-            <h6><b>Location</b></h6>
-            <p>I am a very simple card. I am good at containing small bits of information. </p>
-            <h6><b>Tags</b></h6>
-            <p>I am a very simple card. I am good at containing small bits of information. </p>
-            <h6><b>Suspect Description</b></h6>
-            <div class="row valign-wrapper">
-              <div class="col s2">
-                <img src="img/black.jpg" alt="" class="circle responsive-img">
-                <!-- notice the "circle" class -->
-              </div>
-              <div class="col s10">
-                <span class="black-text">  Black man with white eyes. Be careful.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s12 m7">
-        <div class="card amber">
-          <div class="card-image">
-            <div class="video-container">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/70kt3JnUZfc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> </div>
-          </div>
-          <div class="card-content">
-            <h6><b>Description </b></h6>
-            <p>I am a very simple card. I am good at containing small bits of information. </p>
-            <h6><b>Location</b></h6>
-            <p>I am a very simple card. I am good at containing small bits of information. </p>
-            <h6><b>Tags</b></h6>
-            <p>I am a very simple card. I am good at containing small bits of information. </p>
-            <h6><b>Suspect Description</b></h6>
-            <div class="row valign-wrapper">
-              <div class="col s2">
-                <img src="img/black.jpg" alt="" class="circle responsive-img">
-                <!-- notice the "circle" class -->
-              </div>
-              <div class="col s10">
-                <span class="black-text">  Black man with white eyes. Be careful.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s12 m7">
         <div class="card">
           <div class="card-image">
-            <div class="video-container">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/70kt3JnUZfc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> </div>
-          </div>
-          <div class="card-content">
-            <h6><b>Description </b></h6>
-            <p>I am a very simple card. I am good at containing small bits of information. </p>
-            <h6><b>Location</b></h6>
-            <p>I am a very simple card. I am good at containing small bits of information. </p>
-            <h6><b>Tags</b></h6>
-            <p>I am a very simple card. I am good at containing small bits of information. </p>
-            <h6><b>Suspect Description</b></h6>
-            <div class="row valign-wrapper">
-              <div class="col s2">
-                <img src="img/black.jpg" alt="" class="circle responsive-img">
-                <!-- notice the "circle" class -->
-              </div>
-              <div class="col s10">
-                <span class="black-text">  Black man with white eyes. Be careful.</span>
+            <video class="responsive-video" controls>
+              <source src="IMG_4397.mov" type="video/mp4">
+            </video>
+            <div class="card-content">
+              <h6><b>Description </b></h6>
+              <p>Man trying to steal bike and runs away</p>
+              <h6><b>Location</b></h6>
+              <p>West Campus</p>
+              <h6><b>Tags</b></h6>
+              <p>#bike #theft #man #stolen </p>
+              <h6><b>Suspect Description</b></h6>
+              <div class="row valign-wrapper">
+                <div class="col s2">
+                  <img src="img/thief.jpg" alt="" class="circle responsive-img">
+                  <!-- notice the "circle" class -->
+                </div>
+                <div class="col s10">
+                  <span class="black-text">Black Jacket, bulk build.</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <div class="row">
+        <div class="col s12 m7">
+          <div class="card">
+            <div class="card-image">
+              <video class="responsive-video" controls>
+              <source src="IMG_0077.mov" type="video/mp4">
+            </video>
+              <div class="card-content">
+                <div class="row">
+                  <div class="col s6">
+                    <h6><b>Description </b></h6></div>
+                  <div class="col s6 red-text">18% Crime Severity</div>
+                </div>
+                <p>Fight breaking out at AT&T Center</p>
+                <h6><b>Location</b></h6>
+                <p>ATnT Conference Center</p>
+                <h6><b>Tags</b></h6>
+                <p>#fight #man #brutal</p>
+                <h6><b>Suspect Description</b></h6>
+                <div class="row valign-wrapper">
+                  <div class="col s2">
+                    <img src="img/thief.jpg" alt="" class="circle responsive-img">
+                    <!-- notice the "circle" class -->
+                  </div>
+                  <div class="col s10">
+                    <span class="black-text">Black Jacket, bulk build.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 m7">
+            <div class="card">
+              <div class="card-image">
+                <video class="responsive-video" controls>
+              <source src="IMG_4395.mov" type="video/mp4">
+            </video>
+                <div class="card-content">
+                  <h6><b>Description </b></h6>
+                  <p>Bruce Lee has returned! This mother fucker is beating on Gandhi</p>
+                  <h6><b>Location</b></h6>
+                  <p>ATnT Conference Center</p>
+                  <h6><b>Tags</b></h6>
+                  <p>#fight #man #indian #chink</p>
+                  <h6><b>Suspect Description</b></h6>
+                  <div class="row valign-wrapper">
+                    <div class="col s2">
+                      <img src="img/thief.jpg" alt="" class="circle responsive-img">
+                      <!-- notice the "circle" class -->
+                    </div>
+                    <div class="col s10">
+                      <span class="black-text">Black Jacket, bulk build.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m7">
+              <div class="card">
+                <div class="card-image">
+                  <video class="responsive-video" controls>
+              <source src="IMG_4396.mov" type="video/mp4">
+            </video>
+                  <div class="card-content">
+                    <h6><b>Description </b></h6>
+                    <p>I am a very simple card. I am good at containing small bits of information. </p>
+                    <h6><b>Location</b></h6>
+                    <p>I am a very simple card. I am good at containing small bits of information. </p>
+                    <h6><b>Tags</b></h6>
+                    <p>I am a very simple card. I am good at containing small bits of information. </p>
+                    <h6><b>Suspect Description</b></h6>
+                    <div class="row valign-wrapper">
+                      <div class="col s2">
+                        <img src="img/thief.jpg" alt="" class="circle responsive-img">
+                        <!-- notice the "circle" class -->
+                      </div>
+                      <div class="col s10">
+                        <span class="black-text">Black Jacket, bulk build.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
-  </div>
+
+          </div>
 </body>
 
 </html>
