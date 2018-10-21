@@ -11,6 +11,7 @@ azureDB = SQLDatabase()
 allcrimes = azureDB.query_all_crimes()
 recentcrimes = azureDB.query_recent_crimes()
 westcampuscrimes = azureDB.query_westcampus_crimes()
+predicted_alc_crimes = azureDB.query_predicted_alc_crimes()
 
 @app.route("/")
 def init():
@@ -31,9 +32,10 @@ def west_campus_crimes():
     print("COUNT WESTCAMPUS CRIMES: ", len(westcampuscrimes))
     return jsonify(westcampuscrimes)
 
-
-def predicted_crimes():
-    pass
+@app.route("/predictalccrimes")
+def predict_alc_crimes():
+    print("COUNT PREDICTED CRIMES: ", len(predicted_alc_crimes))
+    return jsonify(predicted_alc_crimes)
 
 
 if __name__ == "__main__":

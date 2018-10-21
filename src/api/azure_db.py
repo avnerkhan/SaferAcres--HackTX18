@@ -85,7 +85,6 @@ class SQLDatabase(object):
         cursor.execute("SELECT * FROM apd_data")
         item = cursor.fetchone()
         all_crimes = []
-        #return res[0]
         while item:
             data = {
                 'crime_type': item[0],
@@ -111,7 +110,6 @@ class SQLDatabase(object):
         cursor.execute("SELECT * FROM apd_data")
         item = cursor.fetchone()
         all_crimes = []
-        #return res[0]
         while item:
             date = item[1]
             year = date.split("-")[0]
@@ -140,7 +138,6 @@ class SQLDatabase(object):
         cursor.execute("SELECT * FROM apd_data")
         item = cursor.fetchone()
         all_crimes = []
-        #return res[0]
         while item:
             zip = item[5]
             if int(zip) == 78705 or int(zip) == 78722 or int(zip) == 78701 or int(zip) == 78703:
@@ -156,6 +153,26 @@ class SQLDatabase(object):
             item = cursor.fetchone()
         return all_crimes
 
+    def query_predicted_alc_crimes(self):
+        server = 'saferacres.database.windows.net'
+        database = 'apd-forcasted'
+        username = 'saferacres'
+        password = 'Yeetman123'
+        driver= '{ODBC Driver 13 for SQL Server}'
+
+        cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
+        cursor = cnxn.cursor()
+        cursor.execute("SELECT * FROM alc_poss_projections")
+        item = cursor.fetchone()
+        all_crimes = []
+        while item:
+            data = {
+                'longitude': item[1],
+                'latitude': item[2]
+            }
+            all_crimes.append(data)
+            item = cursor.fetchone()
+        return all_crimes
 
 if __name__ == "__main__":
     app = SQLDatabase()
