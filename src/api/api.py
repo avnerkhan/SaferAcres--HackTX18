@@ -26,7 +26,7 @@ def most_recent_crimes():
     print("COUNT RECENT CRIMES: ", len(recentcrimes))
     return jsonify(recentcrimes)
 
-@app.route("/westcampuscrimes")
+@app.route("/westcampuscrimes", methods=["GET"])
 def west_campus_crimes():
     print("COUNT WESTCAMPUS CRIMES: ", len(westcampuscrimes))
     return jsonify(westcampuscrimes)
