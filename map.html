@@ -4,6 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="SaferAcres">
   <title>Map | SaferAcres</title>
   <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css" />
   <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script>
@@ -30,7 +33,30 @@
 </head>
 
 <body onload="showData()">
+  <style>
+#floating-panel {
+ position: absolute;
+ top: 10px;
+ right: 5%;
+ z-index: 5;
+ padding: 5px;
+ text-align: center;
+ line-height: 30px;
+ padding-left: 10px;
+}
+</style>
+
   <div id="map" ></div>
+  <div class="field " id="floating-panel">
+    <div class="control">
+      <div class="select is-primary is-rounded">
+        <select>
+          <option class="has-text-center">Past/Present</option>
+          <option>Future</option>
+        </select>
+      </div>
+    </div>
+  </div>
   <nav class="navbar is-fixed-bottom is-dark">
     <div class="columns is-mobile">
       <div class="column" style="margin-left: 10%; margin-top: 2%;">
