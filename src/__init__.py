@@ -57,26 +57,62 @@ def predict_alc_crimes():
     print("COUNT PREDICTED CRIMES: ", len(predicted_alc_crimes))
     return jsonify(predicted_alc_crimes)
 
-# @app.route("/sentimentapi")
-# def sentiment_api():
-#     text = request.get_json().get("text")
-#     apm_key = "c241970bc9844ce88b6c61eb909ec335"
-#     url = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment"
-#
-#     headers = {
-#     "Ocp-Apim-Subscription-Key": apm_key
-#     }
-#     data = {
-#         "documents": [
-#         {
-#           "language": "en",
-#           "id": "1",
-#           "text": text
-#         }
-#       ]
-#     }
-#     response = requests.post(url, data = data, headers = headers)
-#     return jsonify(response)
+@app.route("/keyphrases", methods=["GET"])
+def key_phrases_api():
+    txt = request.args.get('textStr')
+    apm_key = "4bb87088df584594927bbf9515d74066"
+    url = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases"
+
+    headers = {
+    "Ocp-Apim-Subscription-Key": apm_key,
+    'Content-Type': 'application/json'
+    }
+
+    data = {
+        "documents": [
+        {
+          "language": "en",
+          "id": "1",
+          "text": txt
+        }
+      ]
+    }
+    response = requests.post(url, json = data, headers = headers)
+    res = {
+        "result": response.json()['documents'][0]['keyPhrases']
+    }
+    return jsonify(res)
+
+@app.route("/sentimentanalysis", methods=["GET"])
+def sentiment_api():
+    txt = request.args.get('textStr')
+    apm_key = "4bb87088df584594927bbf9515d74066"
+    url = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment"
+
+    headers = {
+    "Ocp-Apim-Subscription-Key": apm_key,
+    'Content-Type': 'application/json'
+    }
+
+    data = {
+        "documents": [
+        {
+          "language": "en",
+          "id": "1",
+          "text": txt
+        }
+      ]
+    }
+    response = requests.post(url, json = data, headers = headers)
+    res = {
+        "result": response.json()['documents'][0]['score']
+    }
+    return jsonify(res)
+
+
+@app.errorhandler(400)
+def not_found_page(e):
+    return '400: page not found, {}'.format(e)
 
 @app.errorhandler(404)
 def not_found_page(e):
