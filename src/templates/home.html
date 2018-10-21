@@ -30,19 +30,18 @@
   <script type="text/javascript" src="../static/js/init.js"></script>
   <script type="text/javascript" src="../static/js/home.js"></script>
   <script type="text/javascript" src="../static/js/marker.js"></script>
-  <script type="text/javascript" src="../static/js/marker.js"></script>
 
   <script>
     function home() {
-      window.open('http://localhost:5000/home', '_self');
+      window.open('http://localhost:443/home', '_self');
     }
 
     function map() {
-      window.open('http://localhost:5000/map', '_self');
+      window.open('http://localhost:443/map', '_self');
     }
 
     function today() {
-      window.open('http://localhost:5000/today', '_self');
+      window.open('https://app.powerbi.com/view?r=eyJrIjoiMDYyZGViMDQtNDY3OC00MDdhLTk2Y2UtOWU2MGY4ZjIyYTk5IiwidCI6IjY5YmNlNTA3LTljZjgtNDRhZC1iOTc3LWQ0NDM1ZmYzZDhjNSIsImMiOjN9', '_self');
     }
   </script>
   <style>
@@ -90,7 +89,7 @@
     <blockquote>
       Please call 911 first if you are in direct danger. </blockquote>
     <div class="collection" style="border-radius: 20px;">
-      <a href="#!" class="collection-item"><input class="file-input" id="video" type="file" name="resume">Record Crime</a>
+      <a href="#!" class="collection-item"><input class="file-input" id="video" type="file" accept="video/*">Record Crime</a>
     </div>
     <div class="row">
       <form class="col s12">
@@ -98,6 +97,12 @@
           <div class="input-field col s12">
             <textarea id="description" class="materialize-textarea"></textarea>
             <label for="textarea1">Quick Description</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="location" class="materialize-textarea"></textarea>
+            <label for="textarea1">Location</label>
           </div>
         </div>
       </form>
@@ -108,6 +113,8 @@
 
 <body class="" onload="loadData()">
   <div class="container">
+  <div id="cardList"></div>
+
     <div class="row">
       <div class="col s12 m7">
         <div class="card">
@@ -130,7 +137,6 @@
               <div class="row valign-wrapper">
                 <div class="col s2">
                   <img src="../static/img/thief.jpg" alt="" class="circle responsive-img">
-                  <!-- notice the "circle" class -->
                 </div>
                 <div class="col s10">
                   <span class="black-text">Black Jacket, bulk build.</span>
@@ -162,7 +168,6 @@
                 <div class="row valign-wrapper">
                   <div class="col s2">
                     <img src="../static/img/thief.jpg" alt="" class="circle responsive-img">
-                    <!-- notice the "circle" class -->
                   </div>
                   <div class="col s10">
                     <span class="black-text">Black Jacket, bulk build.</span>
@@ -194,7 +199,6 @@
                   <div class="row valign-wrapper">
                     <div class="col s2">
                       <img src="../static/img/thief.jpg" alt="" class="circle responsive-img">
-                      <!-- notice the "circle" class -->
                     </div>
                     <div class="col s10">
                       <span class="black-text">Green Jacket, Tall</span>
@@ -226,7 +230,6 @@
                     <div class="row valign-wrapper">
                       <div class="col s2">
                         <img src="../static/img/thief.jpg" alt="" class="circle responsive-img">
-                        <!-- notice the "circle" class -->
                       </div>
                       <div class="col s10">
                         <span class="black-text">Green Jacket, Tall</span>
