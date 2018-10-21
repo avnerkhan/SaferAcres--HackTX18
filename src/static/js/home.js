@@ -1,6 +1,4 @@
-function login() {
-  window.open("http://40.124.2.212:443/home", "_self");
-}
+
 function crimeAlert() {
   var description = document.getElementById('description');
   var location = document.getElementById('location');
